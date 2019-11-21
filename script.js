@@ -74,7 +74,13 @@ function insertOp(op) {
                 changeColor();
             } else {
                 // auto redirect ke homepage setelah user close pop up jika jawaban salah
-                window.location.href = "index.html";
+                // window.location.href = "index.html";
+
+                document.getElementById('level').innerHTML = 1;
+                soal = generate();
+                document.getElementById('ans').innerHTML = soal[2];
+                document.getElementById('question').innerHTML = soal[1].join(' ');
+                changeColor();
             }
 
             // prevent twice call
