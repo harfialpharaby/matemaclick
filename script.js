@@ -48,19 +48,23 @@ function insertOp(op) {
         let win;
 
         if (eval(soal[1].join('')) === soal[2]) {
-            document.getElementById('win').style.display = "";
+            // win state
             document.getElementById('level-up').style.display = "";
+            document.getElementById('win-state').style.display = "";
+
+            // lose state
             document.getElementById('alert').style.display = "none";
-            document.getElementById('highest-level').style.display = "none";
-            document.getElementById('lose').style.display = "none";
+            document.getElementById('lose-state').style.display = "none";
             win = true;
         } else {
+            // lose state
             document.getElementById('highest-level').innerHTML = 'Your Highest Level : ' + document.getElementById('level').innerHTML;
-            document.getElementById('lose').style.display = "";
             document.getElementById('alert').style.display = "";
-            document.getElementById('highest-level').style.display = "";
+            document.getElementById('lose-state').style.display = "";
+
+            // win state
             document.getElementById('level-up').style.display = "none";
-            document.getElementById('win').style.display = "none";
+            document.getElementById('win-state').style.display = "none";
             win = false;
         }
 

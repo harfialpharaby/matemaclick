@@ -91,15 +91,22 @@
                 </div>
                 <div class="modal-body">
                     <!-- win state -->
-                    <img src="img/win0.png" alt="Correct Answer" id="win" class="w-100" style="display: none;">
+                    <div id="win-state" style="display: none;">
+                        <img src="img/win0.png" alt="Correct Answer" id="win" class="w-100">
+                    </div>
 
                     <!-- lose state -->
-                    <p class="text-primary font-weight-bolder text-center" style="display: none;" id="highest-level">
-                    </p>
-                    <img src="img/lose0.png" alt="Wrong Answer" id="lose" class="w-100" style="display: none;">
+                    <div id="lose-state" style="display: none;">
+                        <p class="text-primary font-weight-bolder text-center" id="highest-level">
+                        </p>
+                        <img src="img/lose0.png" alt="Wrong Answer" id="lose" class="w-100">
+                        <a href="index.html" class="btn btn-outline-info w-100" role="button">
+                            Home
+                        </a>
+                    </div>
 
                     <!-- note -->
-                    <p class="text-info font-italic font-weight-light text-center">
+                    <p class="text-secondary font-italic font-weight-light text-center">
                         Click X or Tap Anywhere to Continue
                     </p>
                 </div>
