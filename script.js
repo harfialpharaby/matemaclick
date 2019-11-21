@@ -55,7 +55,7 @@ function insertOp(op) {
             document.getElementById('lose').style.display = "none";
             win = true;
         } else {
-            document.getElementById('highest-level').innerHTML += document.getElementById('level').innerHTML;
+            document.getElementById('highest-level').innerHTML = 'Your Highest Level : ' + document.getElementById('level').innerHTML;
             document.getElementById('lose').style.display = "";
             document.getElementById('alert').style.display = "";
             document.getElementById('highest-level').style.display = "";

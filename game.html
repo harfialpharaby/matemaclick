@@ -20,6 +20,17 @@
             transform: translate(-50%, -50%);
             text-align: center;
         }
+
+        .modal-sm {
+            max-width: 300px;
+        }
+
+        @media (min-width: 320px) {
+            .modal-sm {
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
     </style>
     <title>Matemaclick</title>
 </head>
@@ -62,7 +73,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="result" tabindex="-1" role="dialog" aria-labelledby="resultTitle" aria-hidden="true">
+    <div class="modal fade bd-example-modal-sm" id="result" tabindex="-1" role="dialog" aria-labelledby="resultTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -82,13 +94,12 @@
                     <img src="img/win0.png" alt="Correct Answer" id="win" class="w-100" style="display: none;">
 
                     <!-- lose state -->
-                    <p class="text-danger font-weight-bolder text-center" style="display: none;" id="highest-level">
-                        Your Highest Level :
+                    <p class="text-primary font-weight-bolder text-center" style="display: none;" id="highest-level">
                     </p>
                     <img src="img/lose0.png" alt="Wrong Answer" id="lose" class="w-100" style="display: none;">
 
                     <!-- note -->
-                    <p class="text-primary font-italic font-weight-light text-center">
+                    <p class="text-info font-italic font-weight-light text-center">
                         Click X or Press Anywhere Outside This Pop-up to Continue.
                     </p>
                 </div>
