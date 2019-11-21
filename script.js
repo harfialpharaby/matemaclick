@@ -51,11 +51,14 @@ function insertOp(op) {
             document.getElementById('win').style.display = "";
             document.getElementById('level-up').style.display = "";
             document.getElementById('alert').style.display = "none";
+            document.getElementById('highest-level').style.display = "none";
             document.getElementById('lose').style.display = "none";
             win = true;
         } else {
+            document.getElementById('highest-level').innerHTML += document.getElementById('level').innerHTML;
             document.getElementById('lose').style.display = "";
             document.getElementById('alert').style.display = "";
+            document.getElementById('highest-level').style.display = "";
             document.getElementById('level-up').style.display = "none";
             document.getElementById('win').style.display = "none";
             win = false;

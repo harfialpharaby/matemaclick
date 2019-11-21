@@ -63,22 +63,34 @@
 
     <!-- Modal -->
     <div class="modal fade" id="result" tabindex="-1" role="dialog" aria-labelledby="resultTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-success" id="level-up" style="display: none;">
-                        LEVEL UP</h5>
-                    <h5 class="modal-title text-danger" id="alert" style="display: none;">
-                        ALERT</h5>
+                    <!-- win state -->
+                    <h5 class="modal-title text-success" id="level-up" style="display: none;">LEVEL UP</h5>
+
+                    <!-- lose state -->
+                    <h5 class="modal-title text-danger" id="alert" style="display: none;">ALERT</h5>
+
+                    <!-- close button -->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="img/win0.png" alt="" id="win" class="w-100" style="display: none;">
-                    <img src="img/lose0.png" alt="" id="lose" class="w-100" style="display: none;">
-                    <p class="text-primary font-italic font-weight-light text-center">Click X or Press Anywhere Outside
-                        This Pop-up to Continue.</p>
+                    <!-- win state -->
+                    <img src="img/win0.png" alt="Correct Answer" id="win" class="w-100" style="display: none;">
+
+                    <!-- lose state -->
+                    <p class="text-danger font-weight-bolder text-center" style="display: none;" id="highest-level">
+                        Your Highest Level :
+                    </p>
+                    <img src="img/lose0.png" alt="Wrong Answer" id="lose" class="w-100" style="display: none;">
+
+                    <!-- note -->
+                    <p class="text-primary font-italic font-weight-light text-center">
+                        Click X or Press Anywhere Outside This Pop-up to Continue.
+                    </p>
                 </div>
             </div>
         </div>
