@@ -67,6 +67,11 @@ function insertOp(op) {
         // tampilkan modal result sesuai dokumentasi bootstrap
         $('#result').modal('show');
 
+        // klik dimana saja akan menutup pop up
+        $('#result').click(function () {
+            $('.modal').modal('hide');
+        });
+
         $('#result').on('hidden.bs.modal', function (e) {
             if (win) {
                 // saat menang, naikkan level, generate soal baru, dan ubah background color
