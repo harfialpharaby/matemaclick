@@ -23,6 +23,9 @@
 
 .bg-dark {
     background-color: #2c3e50;
+}
+
+.question {
     max-width: 600px;
     margin: 1% auto 0.5% auto;
     border-top-left-radius: 10px;
@@ -41,6 +44,10 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+.btn-radius {
+    border-radius: 1px 30px;
 }
 
 .btn {
@@ -169,7 +176,61 @@
     padding: 20px;
 }
 
-/* Add Animation */
+.matema,
+.click {
+    letter-spacing: 8px;
+    font-weight: bolder;
+    position: relative;
+    font-size: 50px;
+    animation: text 3s 1;
+    display: block;
+}
+
+#mouse {
+    animation: pointer 5s 1;
+}
+
+/* animated arrow button */
+.arrow-button {
+    border-radius: 1px 30px;
+    background-color: #27ae60;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.arrow-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.arrow-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.arrow-button:hover span {
+    padding-right: 25px;
+}
+
+.arrow-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* Add Animation modal */
 @-webkit-keyframes animatetop {
     from {
         top: -300px;
@@ -191,5 +252,47 @@
     to {
         top: 0;
         opacity: 1
+    }
+}
+
+/* Add Animation index */
+@-webkit-keyframes text {
+    from {
+        letter-spacing: 30px;
+    }
+
+    to {
+        letter-spacing: 8px;
+    }
+}
+
+@keyframes text {
+    from {
+        letter-spacing: 30px;
+    }
+
+    to {
+        letter-spacing: 8px;
+    }
+}
+
+/* Add Animation index mouse image */
+@-webkit-keyframes text {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pointer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
