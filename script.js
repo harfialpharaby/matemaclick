@@ -50,8 +50,6 @@ function insertOp(op) {
         // Get the modal
         let modal = document.getElementById("resultModal");
 
-        console.log(document.getElementsByClassName('modal-header'));
-
         if (eval(soal[1].join('')) === soal[2]) {
             // win state
             document.getElementsByClassName('modal-header')[0].style.backgroundColor = '#2ecc71';
@@ -79,40 +77,37 @@ function insertOp(op) {
         // open the modal 
         modal.style.display = "block";
 
+        // close modal when user clicks on it
         modal.onclick = function () {
             modal.style.display = "none";
+            validateAnswer(win);
         }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-            if (event.target == modal) {
+            if (event.target == modal && modal.style.display === 'block') {
                 modal.style.display = "none";
+                validateAnswer(win);
             }
         }
-
-
-        // validateAnswer(win);
     }
 }
 
 function validateAnswer(res) {
-    if (modal.style.display === 'none') {
-        if (win) {
-            // saat menang, naikkan level, generate soal baru, dan ubah background color
-            document.getElementById('level').innerHTML++;
-            soal = generate();
-            document.getElementById('ans').innerHTML = soal[2];
-            document.getElementById('question').innerHTML = soal[1].join(' ');
-            changeColor();
-        } else {
-            // auto redirect ke homepage setelah user close pop up jika jawaban salah
-            // window.location.href = "index.html";
-
-            document.getElementById('level').innerHTML = 1;
-            soal = generate();
-            document.getElementById('ans').innerHTML = soal[2];
-            document.getElementById('question').innerHTML = soal[1].join(' ');
-            changeColor();
-        }
+    if (res) {
+        // saat menang, naikkan level, generate soal baru, dan ubah background color
+        document.getElementById('level').innerHTML++;
+        soal = generate();
+        document.getElementById('ans').innerHTML = soal[2];
+        document.getElementById('question').innerHTML = soal[1].join(' ');
+        changeColor();
+    } else {
+        // auto redirect ke homepage setelah user close pop up jika jawaban salah
+        window.location.href = "index.html";
+        // document.getElementById('level').innerHTML = 1;
+        // soal = generate();
+        // document.getElementById('ans').innerHTML = soal[2];
+        // document.getElementById('question').innerHTML = soal[1].join(' ');
+        // changeColor();
     }
 }
