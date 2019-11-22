@@ -71,7 +71,7 @@ function insertOp(op) {
         // tampilkan modal result sesuai dokumentasi bootstrap
         $('#result').modal('show');
 
-        // klik dimana saja akan menutup pop up
+        // klik dimana saja akan menutup pop up termasuk didalam modal
         $('#result').click(function () {
             $('.modal').modal('hide');
         });
