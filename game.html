@@ -6,125 +6,70 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <!-- own style -->
-    <style>
-        .container {
-            width: 100%;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .modal-sm {
-            max-width: 300px;
-        }
-
-        @media (min-width: 320px) {
-            .modal-sm {
-                margin-right: auto;
-                margin-left: auto;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <title>Matemaclick</title>
 </head>
 
 <body>
     <!-- keterangan level -->
-    <div class="alert alert-primary" role="alert">
-        <h4>LEVEL: <span id="level" class="text-danger font-weight-bolder">1</span></h4>
+    <div class="alert-primary mw-sm">
+        <h4>LEVEL: <span id="level">1</span></h4>
     </div>
 
     <!-- isi konten -->
-    <div class="container">
-        <div class="row justify-content-md-center mb-3">
-            <div class="col bg-light img-thumbnail">
-                <h1 style="font-size: 150px;" id="ans"></h1>
-            </div>
+    <div class="container mw-sm">
+        <div class="bg-light">
+            <h1 style="font-size: 150px;" id="ans"></h1>
         </div>
-        <div class="row justify-content-md-center mb-1">
-            <div class="col bg-dark text-light img-thumbnail">
-                <h1 style="font-size: 50px;" id="question"></h1>
-            </div>
+
+        <div class="bg-dark text-light outline-light">
+            <h1 style="font-size: 50px;" id="question"></h1>
         </div>
-        <div class="row justify-content-md-center">
-            <div class="col">
-                <button type="button" class="btn btn-success btn-outline-light w-100" onclick="insertOp('+')">
-                    <h2>&plus;</h2>
-                </button>
-            </div>
-            <div class="col">
-                <button type="button" class="btn btn-success btn-outline-light w-100" onclick="insertOp('-')">
-                    <h2>&minus;</h2>
-                </button>
-            </div>
-            <div class="col">
-                <button type="button" class="btn btn-success btn-outline-light w-100" onclick="insertOp('*')">
-                    <h2>&times;</h2>
-                </button>
-            </div>
+
+        <div class="flex-container">
+            <button type="button" class="outline-light btn-success btn btn-left" onclick="insertOp('+')">
+                <h2>&plus;</h2>
+            </button>
+            <button type="button" class="outline-light btn-success btn" onclick="insertOp('-')">
+                <h2>&minus;</h2>
+            </button>
+            <button type="button" class="outline-light btn-success btn btn-right" onclick="insertOp('*')">
+                <h2>&times;</h2>
+            </button>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-sm" id="result" tabindex="-1" role="dialog" aria-labelledby="resultTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!-- win state -->
-                    <h5 class="modal-title text-success" id="level-up" style="display: none;">LEVEL UP</h5>
+    <!-- The Modal -->
+    <div id="resultModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- win state -->
+                <h5 class="text-center" id="level-up" style="display: none;">LEVEL UP</h5>
 
-                    <!-- lose state -->
-                    <h5 class="modal-title text-danger" id="alert" style="display: none;">ALERT</h5>
-
-                    <!-- close button -->
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <!-- lose state -->
+                <h5 class="text-center" id="alert" style="display: none;">ALERT</h5>
+            </div>
+            <div class="modal-body">
+                <div id="win-state" style="display: none;">
+                    <img src="img/win0.png" alt="Correct Answer" id="win" class="w-100">
                 </div>
-                <div class="modal-body">
-                    <!-- win state -->
-                    <div id="win-state" style="display: none;">
-                        <img src="img/win0.png" alt="Correct Answer" id="win" class="w-100">
-                    </div>
 
-                    <!-- lose state -->
-                    <div id="lose-state" style="display: none;">
-                        <p class="text-primary font-weight-bolder text-center" id="highest-level">
-                        </p>
-                        <img src="img/lose0.png" alt="Wrong Answer" id="lose" class="w-100">
-                        <a href="index.html" class="btn btn-outline-info w-100" role="button">
-                            Home
-                        </a>
-                    </div>
-
-                    <!-- note -->
-                    <p class="text-secondary font-italic font-weight-light text-center">
-                        Click X or Tap Anywhere to Continue
+                <div id="lose-state" style="display: none;">
+                    <p class="text-primary font-weight-bolder text-center" id="highest-level">
                     </p>
+                    <img src="img/lose0.png" alt="Wrong Answer" id="lose" class="w-100">
                 </div>
+
+                <!-- note -->
+                <p class="text-secondary font-italic font-weight-light text-center">
+                    Tap Anywhere to Continue
+                </p>
             </div>
         </div>
     </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
 
     <!-- my script -->
     <script src="script.js"></script>

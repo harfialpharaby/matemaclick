@@ -1,11 +1,12 @@
 // fungsi dijalankan saat halaman sudah ready
 var soal = generate();
+init();
+changeColor();
 
-$(document).ready(function () {
+function init() {
     document.getElementById('ans').innerHTML = soal[2];
     document.getElementById('question').innerHTML = soal[1].join(' ');
-    changeColor();
-});
+}
 
 function changeColor() {
     // ubah warna background
@@ -46,9 +47,14 @@ function insertOp(op) {
 
     if (!soal[1].includes('&EmptySmallSquare;')) {
         let win;
+        // Get the modal
+        let modal = document.getElementById("resultModal");
+
+        console.log(document.getElementsByClassName('modal-header'));
 
         if (eval(soal[1].join('')) === soal[2]) {
             // win state
+            document.getElementsByClassName('modal-header')[0].style.backgroundColor = '#2ecc71';
             document.getElementById('level-up').style.display = "";
             document.getElementById('win-state').style.display = "";
 
@@ -58,6 +64,7 @@ function insertOp(op) {
             win = true;
         } else {
             // lose state
+            document.getElementsByClassName('modal-header')[0].style.backgroundColor = '#e74c3c';
             document.getElementById('highest-level').innerHTML = 'Your Highest Level : ' + document.getElementById('level').innerHTML;
             document.getElementById('alert').style.display = "";
             document.getElementById('lose-state').style.display = "";
@@ -68,35 +75,44 @@ function insertOp(op) {
             win = false;
         }
 
-        // tampilkan modal result sesuai dokumentasi bootstrap
-        $('#result').modal('show');
 
-        // klik dimana saja akan menutup pop up termasuk didalam modal
-        $('#result').click(function () {
-            $('.modal').modal('hide');
-        });
+        // open the modal 
+        modal.style.display = "block";
 
-        $('#result').on('hidden.bs.modal', function (e) {
-            if (win) {
-                // saat menang, naikkan level, generate soal baru, dan ubah background color
-                document.getElementById('level').innerHTML++;
-                soal = generate();
-                document.getElementById('ans').innerHTML = soal[2];
-                document.getElementById('question').innerHTML = soal[1].join(' ');
-                changeColor();
-            } else {
-                // auto redirect ke homepage setelah user close pop up jika jawaban salah
-                // window.location.href = "index.html";
+        modal.onclick = function () {
+            modal.style.display = "none";
+        }
 
-                document.getElementById('level').innerHTML = 1;
-                soal = generate();
-                document.getElementById('ans').innerHTML = soal[2];
-                document.getElementById('question').innerHTML = soal[1].join(' ');
-                changeColor();
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
+        }
 
-            // prevent twice call
-            $(this).off('hidden.bs.modal');
-        });
+
+        // validateAnswer(win);
+    }
+}
+
+function validateAnswer(res) {
+    if (modal.style.display === 'none') {
+        if (win) {
+            // saat menang, naikkan level, generate soal baru, dan ubah background color
+            document.getElementById('level').innerHTML++;
+            soal = generate();
+            document.getElementById('ans').innerHTML = soal[2];
+            document.getElementById('question').innerHTML = soal[1].join(' ');
+            changeColor();
+        } else {
+            // auto redirect ke homepage setelah user close pop up jika jawaban salah
+            // window.location.href = "index.html";
+
+            document.getElementById('level').innerHTML = 1;
+            soal = generate();
+            document.getElementById('ans').innerHTML = soal[2];
+            document.getElementById('question').innerHTML = soal[1].join(' ');
+            changeColor();
+        }
     }
 }
