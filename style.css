@@ -176,12 +176,12 @@
     padding: 20px;
 }
 
-.matema,
-.click {
+.title {
     letter-spacing: 8px;
     font-weight: bolder;
     position: relative;
-    font-size: 50px;
+    font-size: calc(30px + (40 - 30) * ((100vw - 300px) / (1600 - 300)));
+    /* line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300))); */
     animation: text 3s 1;
     display: block;
 }
@@ -202,7 +202,7 @@
     width: 200px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
+    margin: auto;
 }
 
 .arrow-button span {
